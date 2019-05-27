@@ -1,0 +1,111 @@
+Return-Path: <reakinbcit@gmail.com>
+Received: from mail-pf1-f170.google.com (mail-pf1-f170.google.com [209.85.210.170])
+ by inbound-smtp.us-west-2.amazonaws.com with SMTP id 3msr188duiuc2p0tskdk9c2cbetep63gqrq6em81
+ for tester@tymbyr.awsapps.com;
+ Mon, 27 May 2019 21:13:02 +0000 (UTC)
+Received-SPF: pass (spfCheck: domain of _spf.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170; envelope-from=reakinbcit@gmail.com; helo=mail-pf1-f170.google.com;
+Authentication-Results: amazonses.com;
+ spf=pass (spfCheck: domain of _spf.google.com designates 209.85.210.170 as permitted sender) client-ip=209.85.210.170; envelope-from=reakinbcit@gmail.com; helo=mail-pf1-f170.google.com;
+ dkim=pass header.i=@gmail.com;
+ dmarc=pass header.from=gmail.com;
+X-SES-RECEIPT: AEFBQUFBQUFBQUFGYTRXdkdhOGJuYnFHeHVrYUhIMXNvMUxnN3ZpU1orbjltQkE3Rzh0M3hPd1pwN2lzTXNqbWVmc3ptWW1UcmhOT2dwV1FOR0g3cnFXK3VaRVhhNm96a3hWSmZpdWtGZHk1R3lGZG1oM2dhUjcrV0l4V3JwTnB4NzVBVTRSRTRDZVFnTXdPZGhJM0hFQkRmWVFQcFpIZ2gwcGZ3Y2VZdVNNQU8rUTYyazZQa09oSFl1QTloRjRoV0h2cEUwbzlzY0ZDTEZvd1dXWEdGMHowUEE5VlVqbXBJeDliYzcvcnVBMFlPdVhjdHRZZFYvbTQwRjNyTkQyWDlaQ2NTdURHTjZOMGI5TkxEOEMrcUlBZFcrblN0THpVemtPL3UxMytjOEFzYllqTlAwVmRzNEE9PQ==
+X-SES-DKIM-SIGNATURE: a=rsa-sha256; q=dns/txt; b=T7EPShi7xf5wp0ik2ZsaiWf1KcnsMoI3osOk4UJ2jh+xt8pxXJCg1yxmpVo2nNcYYO/VWoZe0ztN3xai7xAEVc4SwcHJk57QGJnIf5unTW/BHUectECwGWNqNByovMse3huFEXM73XQK+63Qh8nlvG8IvqXcno74owzG6lWw2Ps=; c=relaxed/simple; s=gdwg2y3kokkkj5a55z2ilkup5wp5hhxx; d=amazonses.com; t=1558991583; v=1; bh=gDWKNhxWL+paHRoYkhdj0k7rI+a2jo0kdJVPKnTZ4vg=; h=From:To:Cc:Bcc:Subject:Date:Message-ID:MIME-Version:Content-Type:X-SES-RECEIPT;
+Received: by mail-pf1-f170.google.com with SMTP id b76so10129510pfb.5
+        for <tester@tymbyr.awsapps.com>; Mon, 27 May 2019 14:13:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20161025;
+        h=message-id:mime-version:to:from:subject:date:importance;
+        bh=MhxQ2B/yah9lVgcfVgO5h8cb/u4mOxWmAu9s76KVB0g=;
+        b=NhJFAgsbkV880R8/N6BkS5GjrAjR6l+q4+D9YxLvcilfXARYurGAQZ8Cg3twEaS73d
+         37Al3lpUoSYrFgcC24AGodB+DRScf3/2y6/X/ObLDd5TzN49912uai/BMQjK+jlZxKqz
+         aS+CJqD0cHvwSHdfL98e8Jeo6VupxkFeINnPV5m6VYpxw4iL4s5y9bCY/4SBhYg8fg2z
+         O/KPsV/pNvcNaug9nC7CdVLdrlJ99JpcOSgGJPcYwN/MN7wXo32URLRZVA/q70LKmntX
+         p+/+Em2W8Yu15NJGH8rdHcVTpVa6QFY1xGuLWo3PWPozqpdEMI8FcqvgrT/2ratjPzir
+         uIbQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20161025;
+        h=x-gm-message-state:message-id:mime-version:to:from:subject:date
+         :importance;
+        bh=MhxQ2B/yah9lVgcfVgO5h8cb/u4mOxWmAu9s76KVB0g=;
+        b=WeDvb/VKMDbvqQf3t4tOVgRC6MGt57c+j/If8qseNLUhZcodI051JyAvXZSAcYOyQS
+         0NgLE8qUjS38OimlgNUXq3ZHjGe9ei4zcH4qGuYegXyL38TdulFBORKmVqYKQO2ieooJ
+         OvKv6P6uEy3VPRUe1uVJBEr66aD15LOWkHyOkfjkmGHEtD4Rk+MNEBqmHTvSzSlvYwHU
+         AH4dkgqthtky+6x6GYMl8n/7Xj3n3hIwY8okudFv8wDcA6t4TYrdPh1kHGQdUXCY4zC7
+         ey5KOAIrQmRmPcAzsbNtRHGPaZjXQzxvIYwPQluNtxPhpmmdvi16HvhMVEcQXwhNHpL2
+         pulw==
+X-Gm-Message-State: APjAAAXPBPTDywrkRytlc8kkYy3IuGHuXom2sijqXjFD33+0zqOdbK7q
+	6EH6E876fQQeh5BULsdHa0EBxwDt
+X-Google-Smtp-Source: APXvYqxnoijRHpl5gWPXqTFNxIARQ+NmTSVj4dimSTqYMiRVJ/tJh5eto3BrZgnnETVxmu9b6QU+Ig==
+X-Received: by 2002:a63:eb50:: with SMTP id b16mr53749202pgk.150.1558991582138;
+        Mon, 27 May 2019 14:13:02 -0700 (PDT)
+Return-Path: <reakinbcit@gmail.com>
+Received: from ?IPv6:::ffff:142.232.135.250? (ip-142-232-135-250.ptr.bcit.ca. [142.232.135.250])
+        by smtp.gmail.com with ESMTPSA id k22sm11879901pfk.54.2019.05.27.14.13.00
+        for <tester@tymbyr.awsapps.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 27 May 2019 14:13:01 -0700 (PDT)
+Message-ID: <5cec52dd.1c69fb81.7c3a8.1e25@mx.google.com>
+MIME-Version: 1.0
+To: " 	tester@tymbyr.awsapps.com " <tester@tymbyr.awsapps.com>
+From: Ryan Eakin <reakinbcit@gmail.com>
+Subject: This is an amazing test
+Date: Mon, 27 May 2019 14:13:00 -0700
+Importance: normal
+X-Priority: 3
+Content-Type: multipart/alternative;
+	boundary="_0D9707E9-67ED-4FF0-A3C6-76187E9C127C_"
+
+--_0D9707E9-67ED-4FF0-A3C6-76187E9C127C_
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+
+
+Sent from my IPhone
+Sent from Mail for Windows 10
+
+
+--_0D9707E9-67ED-4FF0-A3C6-76187E9C127C_
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="utf-8"
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" xmlns:w=3D"urn:sc=
+hemas-microsoft-com:office:word" xmlns:m=3D"http://schemas.microsoft.com/of=
+fice/2004/12/omml" xmlns=3D"http://www.w3.org/TR/REC-html40"><head><meta ht=
+tp-equiv=3DContent-Type content=3D"text/html; charset=3Dutf-8"><meta name=
+=3DGenerator content=3D"Microsoft Word 15 (filtered medium)"><style><!--
+/* Font Definitions */
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+/* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Calibri",sans-serif;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-priority:99;
+	color:#954F72;
+	text-decoration:underline;}
+.MsoChpDefault
+	{mso-style-type:export-only;}
+@page WordSection1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 72.0pt 72.0pt 72.0pt;}
+div.WordSection1
+	{page:WordSection1;}
+--></style></head><body lang=3DEN-CA link=3Dblue vlink=3D"#954F72"><div cla=
+ss=3DWordSection1><p class=3DMsoNormal><o:p>&nbsp;</o:p></p><p class=3DMsoN=
+ormal>Sent from my IPhone</p><p class=3DMsoNormal>Sent from <a href=3D"http=
+s://go.microsoft.com/fwlink/?LinkId=3D550986">Mail</a> for Windows 10</p><p=
+ class=3DMsoNormal><o:p>&nbsp;</o:p></p></div></body></html>=
+
+--_0D9707E9-67ED-4FF0-A3C6-76187E9C127C_--
+
