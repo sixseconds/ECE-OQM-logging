@@ -8,11 +8,12 @@ var s3 = new AWS.S3();
 let app = express();
 
 let params = {
-    Bucket:"test-bucket-q45hohw46owrnonryowrw"
+    Bucket:"test-bucket-q45hohw46owrnonryowrw",
+    Key: 'emails/3msr188duiuc2p0tskdk9c2cbetep63gqrq6em81'
 };
-s3.listObjects(params,function(err,data){
+s3.getObject(params,function(err,data){
     if(err) console.log(err);
-    else console.log(data)
+    else console.log(data.Body.toString())
 });
 
 app.get('/',(req,res)=>{
