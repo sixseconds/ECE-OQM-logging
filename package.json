@@ -1,0 +1,29 @@
+{
+  "name": "ece-oqm-logging",
+  "version": "1.0.0",
+  "description": "Tymbyr logging application.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiamLyford/ECE-OQM-logging.git"
+  },
+  "keywords": [
+    "logging",
+    "AWS",
+    "Tymbyr"
+  ],
+  "author": "NC, LL, RE, RF",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LiamLyford/ECE-OQM-logging/issues"
+  },
+  "homepage": "https://github.com/LiamLyford/ECE-OQM-logging#readme",
+  "dependencies": {
+    "aws-sdk": "^2.467.0",
+    "express": "^4.17.1",
+    "mailparser": "^2.7.1"
+  }
+}
