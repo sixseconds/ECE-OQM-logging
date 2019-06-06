@@ -1,4 +1,4 @@
-const express = require("express");
+// const express = require("express");
 const simpleParser = require("mailparser").simpleParser;
 const AWS = require("aws-sdk");
 const Record = require("./utils").Record;
@@ -8,7 +8,7 @@ AWS.config.loadFromPath(".aws/credentials.json");
 var s3 = new AWS.S3();
 // console.log(s3.endpoint);
 
-let app = express();
+// let app = express();
 
 let params = {
     Bucket: "test-bucket-q45hohw46owrnonryowrw"
@@ -80,6 +80,7 @@ let contents = getContents().then((result) => {
 
 // console.log(contents[0].keys())
 
+/*
 app.get("/", (req, res) => {
     res.send("hello");
 });
@@ -87,3 +88,4 @@ app.get("/", (req, res) => {
 app.listen(8080, () => {
     console.log("Server is running on port 8080");
 });
+*/
