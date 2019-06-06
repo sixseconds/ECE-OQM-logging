@@ -52,33 +52,22 @@ async function getContents() {
         let parsed = await simpleParser(email);
         contents.push(parsed);
     }
-
-    console.log(contents[0].keys())
-    /*
-    for (let keys of contents[0].keys()) {
-        console.log(keys);
-    }
-    */
-    // console.log(contents[0].length);
+    console.log(contents[0])
     return contents;
 }
 
-async function makeRecord(email) {
+// testing class properties
+let gayBaby = new Record('myDoc', 'myProj', 'mySubj', 'Gaby', 'Baby', 'email', 'Jan 12');
+console.log(gayBaby.documentTransferInfo);
 
-}
-
-
+/*
 let contents = getContents().then((result) => {
     console.log('werks');
-    /*
-    for (let email of result) {
-        // console.log(Object.keys(email));
-    }
-    */
+    // for (let email of result) {
+    //     // console.log(Object.keys(email));
+    // }
 });
-
-
-// console.log(contents[0].keys())
+*/
 
 /*
 app.get("/", (req, res) => {
