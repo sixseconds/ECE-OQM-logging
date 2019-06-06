@@ -1,11 +1,12 @@
 // const express = require("express");
 const simpleParser = require("mailparser").simpleParser;
 const AWS = require("aws-sdk");
+const Record = require("./utils").Record;
 
 AWS.config.loadFromPath(".aws/credentials.json");
 
 var s3 = new AWS.S3();
-console.log(s3.endpoint);
+// console.log(s3.endpoint);
 
 // let app = express();
 
@@ -19,6 +20,7 @@ function getEmails() {
             if (err) {
                 reject(err);
             }
+            // console.log(data)
             resolve(
                 data.Contents.map(content => {
                     return content.Key;
@@ -26,17 +28,17 @@ function getEmails() {
             );
         });
     });
-}
+};
 
 async function getContents() {
     let keys = await getEmails();
-    console.log(keys);
+    // console.log(keys);
 
     let contents = [];
     for (let key of keys) {
         let objectParams = params;
         objectParams["Key"] = key;
-        console.log(objectParams);
+        // console.log(objectParams);
 
         let email = await new Promise((resolve, reject) => {
             s3.getObject(objectParams, (err, data) => {
@@ -50,11 +52,22 @@ async function getContents() {
         let parsed = await simpleParser(email);
         contents.push(parsed);
     }
-
-    console.log(contents[0]);
+    console.log(contents[0])
+    return contents;
 }
 
-getContents();
+// testing class properties
+let gayBaby = new Record('myDoc', 'myProj', 'mySubj', 'Gaby', 'Baby', 'email', 'Jan 12');
+console.log(gayBaby.documentTransferInfo);
+
+/*
+let contents = getContents().then((result) => {
+    console.log('werks');
+    // for (let email of result) {
+    //     // console.log(Object.keys(email));
+    // }
+});
+*/
 
 /*
 app.get("/", (req, res) => {
